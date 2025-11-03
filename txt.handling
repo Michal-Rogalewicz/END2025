@@ -1,0 +1,31 @@
+while True:
+    print("1 Save user info")
+    print("2 Load user info")
+    print("3 Exit")
+
+    choice = input("\nEnter your choice: ")
+
+    if choice == "1":
+        movie = input("Enter your favourite movie: ")
+
+        with open("movies.txt", "a") as file:
+            file.write(f"{movie}\n")
+
+        print("Movie info saved succesfully.")
+
+    elif choice == "2":
+        try:
+            with open("movies.txt", "r") as file:
+                movie = file.read().strip()
+
+            print("Favourite Movie: ")
+            print(movie)
+        except FileNotFoundError:
+            print("No Movie info found. Please save your info first.")
+
+    elif choice == "3":
+        print("Exiting the program.")
+        break
+
+    else:
+        print("Invalid choice. Please try again.")
